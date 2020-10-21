@@ -1,0 +1,14 @@
+swagger.enabled=true
+
+swagger.title=spring-boot-starter-swagger（nacos）
+swagger.description=Starter for swagger 2.x（nacos）
+swagger.version=1.4.0.RELEASE
+swagger.license=Apache License, Version 2.0
+swagger.licenseUrl=https://www.apache.org/licenses/LICENSE-2.0.html
+swagger.termsOfServiceUrl=https://github.com/dyc87112/spring-boot-starter-swagger
+swagger.contact.name=nacoscontactname
+swagger.contact.url=http://blog.didispace.com
+swagger.contact.email=yuan@aliyun.com
+swagger.base-package=com.hnu
+swagger.base-path=/**
+swagger.exclude-path=/error, /ops/**
