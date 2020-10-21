@@ -4,6 +4,9 @@
 # .idea文件夹
 /.idea
 
+/target
+/target/classes
+
 # Log file
 *.log
 
