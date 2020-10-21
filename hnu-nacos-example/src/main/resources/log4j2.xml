@@ -45,7 +45,7 @@
         </console>
 
         <!-- 所有的日志信息会打印到此文件中，append=false每次启动程序会自动清空 -->
-         <File name="all" fileName="${file_path}/all.log" append="true">
+         <File name="Filelog" fileName="${file_path}/all.log" append="true">
             <PatternLayout pattern="${log_pattern}"/>
         </File>
 

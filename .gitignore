@@ -3,9 +3,11 @@
 
 # .idea文件夹
 /.idea
+./idea
 
 /target
-/target/classes
+target/
+target/classes/
 
 # Log file
 *.log
