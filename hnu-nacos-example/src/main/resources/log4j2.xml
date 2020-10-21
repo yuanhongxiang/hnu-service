@@ -45,7 +45,7 @@
         </console>
 
         <!-- 所有的日志信息会打印到此文件中，append=false每次启动程序会自动清空 -->
-         <File name="Filelog" fileName="${file_path}/all.log" append="true">
+         <File name="all" fileName="${file_path}/all.log" append="true">
             <PatternLayout pattern="${log_pattern}"/>
         </File>
 
@@ -99,6 +99,7 @@
             <AppenderRef ref="Console"/>
         </logger>
         <root level="INFO">
+            <appender-ref ref="all"/>
             <appender-ref ref="Console"/>
             <appender-ref ref="RollingFileInfo"/>
             <appender-ref ref="RollingFileWarn"/>

@@ -6,3 +6,7 @@
        @Api("nacos操作")
        @RefreshScope
        public class NacosControl 
+
+# Log4j2
+## 文件打印追加配置
+    需在<appender-ref>标签添加

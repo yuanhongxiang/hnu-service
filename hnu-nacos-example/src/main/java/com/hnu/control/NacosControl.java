@@ -34,6 +34,7 @@ public class NacosControl {
     public String testNacos(){
         String result = "username :"+username+";  pwd :"+pwd+";   swaggerAble :"+swaggerAble;
         log.info("result:"+ result);
+        log.info("this result: {}", result);
         return "test Nacos  :" + result;
     }
 
