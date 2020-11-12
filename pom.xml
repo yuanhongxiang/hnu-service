@@ -6,7 +6,7 @@
 
     <groupId>com.hnu</groupId>
     <artifactId>hnu-service</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>pom</packaging>
     <name>hnu-service</name>
     <description>hnu micro service parant</description>
@@ -16,6 +16,7 @@
         <module>hnu-kafka</module>
         <module>hnu-common</module>
         <module>hnu-example</module>
+        <module>hnu-druid</module>
     </modules>
 
     <properties>
@@ -226,4 +227,10 @@
         </plugins>
     </build>
 
+    <distributionManagement>
+        <repository>
+            <id>hnu-repository</id>
+            <url>http://172.16.0.152:8081/repository/hnu_repo/</url>
+        </repository>
+    </distributionManagement>
 </project>
