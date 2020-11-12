@@ -30,3 +30,10 @@ target/classes/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/hnu-common/hnu-common.iml
+/hnu-example/hnu-gateway-example/hnu-gateway-example.iml
+/hnu-kafka/hnu-kafka.iml
+/hnu-example/hnu-nacos-example/hnu-nacos-example.iml
+/hnu-netty/hnu-netty.iml
+/hnu-example/hnu-sb-example/hnu-sb-example.iml
+/hnu-example/hnu-springboot-example/hnu-springboot-example.iml
