@@ -1,82 +1,97 @@
 package com.hnu.common.exception;
 
-import com.hnu.common.exception.error.HnuError;
-import com.hnu.common.exception.error.IError;
-
 /**
- * @description: 异常错误
- * @author: YUANHX
- * @create: 11:32 上午
- **/
+ * @Author： yuan
+ * @Description: 封装业务异常类
+ * @Date: Created in 14:53 2017/11/16
+ * @Modified By:
+ */
 public class BusinessException extends RuntimeException{
 
-    private static final long serialVersionUID = -6293662498600553602L;
-    private IError error;
+    private static final long serialVersionUID = -1;
+
+    private String errorCode;
+    private String errorMessage;
     private String extMessage;
 
-    public BusinessException() {
-        this.error = HnuError.BUSINESS_ERROR;
+    public BusinessException(){
+        this.errorCode = "SYS.0000";
+        this.errorMessage = "System Internal Error";
         this.extMessage = null;
     }
 
-    public BusinessException(String message) {
+    public BusinessException(String message){
         super(message);
-        this.error = HnuError.BUSINESS_ERROR;
-        this.extMessage = null;
+        this.errorCode = "SYS.0000";
+        this.errorMessage = message;
         this.extMessage = message;
+    }
+
+    public BusinessException(String errorCode, String message){
+        super();
+        this.errorCode = errorCode;
+        this.errorMessage = message;
+    }
+
+    public BusinessException(String errorCode, String message, String extMessage){
+        super();
+        this.errorCode = errorCode;
+        this.errorMessage = message;
+        this.extMessage = extMessage;
     }
 
     public BusinessException(String message, Throwable cause) {
         super(message, cause);
-        this.error = HnuError.BUSINESS_ERROR;
-        this.extMessage = null;
+        this.errorCode = "SYS.0000";
+        this.errorMessage = message;
         this.extMessage = message;
     }
 
     public BusinessException(Throwable cause) {
         super(cause);
-        this.error = HnuError.BUSINESS_ERROR;
+        this.errorCode = "SYS.0000";
+        this.errorMessage = "System Internal Error";
         this.extMessage = null;
-        if (cause instanceof BusinessException) {
-            BusinessException fe = (BusinessException)cause;
-            this.error = fe.getError();
-            this.extMessage = fe.getMessage();
+        if(cause instanceof BusinessException){
+            BusinessException exception = (BusinessException) cause;
+            this.errorCode = exception.getErrorCode();
+            this.extMessage = exception.getMessage();
+            this.extMessage = exception.getExtMessage();
         }
-
     }
 
-    public BusinessException(IError error) {
-        super(error.getErrorMessage());
-        this.error = HnuError.BUSINESS_ERROR;
-        this.extMessage = null;
-        this.error = error;
+    public BusinessException(String errorCode, String errorMessage, Throwable cause) {
+        super(errorMessage,cause);
+        this.errorCode = errorCode;
+        this.errorMessage = errorMessage;
+        this.extMessage =null;
     }
 
-    public BusinessException(IError error, String message) {
-        super(error.getErrorMessage());
-        this.error = HnuError.BUSINESS_ERROR;
-        this.extMessage = null;
-        this.error = error;
-        this.extMessage = message;
+    public BusinessException(String errorCode, String errorMessage, String extMessage, Throwable cause) {
+        super(errorMessage,cause);
+        this.errorCode = errorCode;
+        this.errorMessage = errorMessage;
+        this.extMessage = extMessage;
     }
 
-    public BusinessException(Throwable cause, IError error, String message) {
-        super(message, cause);
-        this.error = HnuError.BUSINESS_ERROR;
-        this.extMessage = null;
-        this.extMessage = message;
-        this.error = error;
+
+
+
+
+    public String getErrorCode() {
+        return errorCode;
     }
 
-    public BusinessException(IError error, Throwable cause) {
-        super(cause);
-        this.error = HnuError.BUSINESS_ERROR;
-        this.extMessage = null;
-        this.error = error;
+    public void setErrorCode(String errorCode) {
+        this.errorCode = errorCode;
     }
 
-    public IError getError() {
-        return this.error;
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 
     public String getExtMessage() {
@@ -87,8 +102,9 @@ public class BusinessException extends RuntimeException{
         this.extMessage = extMessage;
     }
 
+    @Override
     public String toString() {
-        return super.toString() + ",ErrorCode : " + this.error.getErrorCode() + ", ErrorMessage : " + this.error.getErrorMessage() + ", ExtMessage : " + this.extMessage;
+        return super.toString() + ",ErrorCode : " + this.getErrorCode() + ", ErrorMessage : " + this.getErrorMessage() + ", ExtMessage : " + this.extMessage;
     }
 
 }

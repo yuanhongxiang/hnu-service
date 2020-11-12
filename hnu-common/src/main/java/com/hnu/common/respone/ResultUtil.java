@@ -1,6 +1,5 @@
 package com.hnu.common.respone;
 
-import com.hnu.common.exception.error.HnuError;
 import com.hnu.common.exception.error.IError;
 
 /**

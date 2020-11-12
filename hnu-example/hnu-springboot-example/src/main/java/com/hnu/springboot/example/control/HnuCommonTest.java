@@ -1,6 +1,8 @@
 package com.hnu.springboot.example.control;
 
-import com.hnu.common.exception.BusinessException;
+import com.hnu.common.exception.BaseBusinessException;
+import com.hnu.common.respone.BaseResponse;
+import com.hnu.common.respone.PojoBaseResponse;
 import com.hnu.common.respone.Result;
 import com.hnu.common.respone.ResultUtil;
 import com.hnu.springboot.example.exception.HnuError;
@@ -17,6 +19,39 @@ import org.springframework.web.bind.annotation.RestController;
 public class HnuCommonTest {
 
     @RequestMapping("/add")
+    public BaseResponse add(){
+        return new BaseResponse();
+    }
+
+    @RequestMapping("/add1")
+    public BaseResponse add1(){
+        PojoBaseResponse response = new PojoBaseResponse<>();
+        response.setData("PojoBaseResponse");
+        return response;
+    }
+
+    @RequestMapping("/add2")
+    public BaseResponse add2(){
+        PojoBaseResponse response = new PojoBaseResponse<>();
+        throw new BaseBusinessException(HnuError.SAVE_ERROR);
+//        return response;
+    }
+
+    @RequestMapping("/add4")
+    public Result add4(){
+        Result result1 = new Result();
+        result1.setData("abcd");
+        return result1;
+    }
+
+    @RequestMapping("/add5")
+    public Result add5(){
+        Result result1 = new Result();
+        result1.setData("abcd");
+        return ResultUtil.success(result1);
+    }
+
+    /*@RequestMapping("/add")
     public Result add(){
         return ResultUtil.success();
     }
@@ -31,16 +66,18 @@ public class HnuCommonTest {
         throw new BusinessException(HnuError.BUSINESS_ERROR);
     }
 
-//    @RequestMapping("/add0")
-//    public Result add0(){
-//        try{
-//            throw new BusinessException(HnuError.BUSINESS_ERROR);
-//        }catch (Exception e){
-//            throw new BusinessException(HnuError.SYSTEM_ERROR);
-//        }
-//        Result chenggadd2 = ResultUtil.success("chenggadd2");
-//        return chenggadd2;
-//    }
+    @RequestMapping("/add0")
+    public Result add0(){
+        Result result = new Result();
+        try{
+            result.setData("add2");
+            throw new BusinessException(HnuError.BUSINESS_ERROR);
+        }catch (Exception e){
+            throw new BusinessException(HnuError.SYSTEM_ERROR);
+        }
+
+//        return ResultUtil.success(result);
+    }
 
     @RequestMapping("/add3")
     public Result add3(){
@@ -59,5 +96,5 @@ public class HnuCommonTest {
         Result result1 = new Result();
         result1.setData("abcd");
         return ResultUtil.success(result1);
-    }
+    }*/
 }

@@ -9,38 +9,29 @@ import com.hnu.common.exception.error.IError;
  **/
 public enum HnuError implements IError {
 
-    SYSTEM_ERROR("400101", "系统错误"),
-    REQUEST_PARSE_PACKET_ERROR("400102","服务器处理数据失败"),
-    BUSINESS_ERROR("400103", "业务处理错误");
+    //保存失败
+    SAVE_ERROR("0001", "SAVE Error"),
+
+    ;
+
+    String errorCode;
+    String errorMessage;
+
+    private static final String NS = "springboot-example";
+
+    HnuError(String errorCode, String errorMessage) {
+        this.errorCode = errorCode;
+        this.errorMessage = errorMessage;
+    }
 
 
-    private String code;
-    private String message;
-    private String nameSpace = "HNU-EXAMPLE.";
-
-    HnuError(String code, String message){
-        this.code = nameSpace + code;
-        this.message = message;
+    @Override
+    public String getErrorCode() {
+        return NS + "." + errorCode;
     }
 
     @Override
-    public String toString() {
-        return "HnuError{" +
-                "code='" + code + '\'' +
-                ", message='" + message + '\'' +
-                ", nameSpace='" + nameSpace + '\'' +
-                '}';
-    }
-
-    public String getNamespace() {
-        return this.nameSpace;
-    }
-
-    public String getErrorCode() {
-        return this.code;
-    }
-
     public String getErrorMessage() {
-        return this.message;
+        return errorMessage;
     }
 }
