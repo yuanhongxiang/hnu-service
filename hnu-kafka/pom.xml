@@ -12,21 +12,18 @@
     <artifactId>hnu-kafka</artifactId>
 
     <properties>
-        <start-class>com.hnu.kafka.KafkaApplication</start-class>
+<!--        <start-class>com.hnu.kafka.KafkaApplication</start-class>-->
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
-            <version>2.6.2</version>
-<!--            <scope>compile</scope>-->
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.apache.kafka</groupId>-->
-<!--            <artifactId>kafka-clients</artifactId>-->
-<!--            <version>2.6.0</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

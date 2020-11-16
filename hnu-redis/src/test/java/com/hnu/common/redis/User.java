@@ -1,0 +1,33 @@
+package com.hnu.common.redis;
+
+import java.io.Serializable;
+
+public class User implements Serializable {
+    private String userName;
+
+    private String name;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userName='" + userName + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
+}

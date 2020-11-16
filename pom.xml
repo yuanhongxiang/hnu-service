@@ -12,11 +12,11 @@
     <description>hnu micro service parant</description>
 
     <modules>
-        <module>hnu-netty</module>
         <module>hnu-kafka</module>
         <module>hnu-common</module>
         <module>hnu-example</module>
         <module>hnu-druid</module>
+        <module>hnu-redis</module>
     </modules>
 
     <properties>
@@ -34,12 +34,6 @@
         <spring.version>5.2.8.RELEASE</spring.version>
     </properties>
 
-     <!--<parent>
-        <groupId>com.hnu.cloud</groupId>
-        <artifactId>spring-cloud-hnu-dependencies</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>-->
-
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -55,31 +49,6 @@
             <version>${guava.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <exclusions><!-- 去掉默认配置 -->
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-logging</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
-
-        <dependency>
-            <!-- Import dependency management from Spring Boot -->
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-dependencies</artifactId>
-            <version>${spring-boot.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-
         <!-- Import dependecy log4j2-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -87,31 +56,6 @@
             <version>${spring-boot.version}</version>
         </dependency>
 
-        <!-- Import dependecy spring boot actuator-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
-        <!-- Import dependecy spring boot swagger-->
-        <dependency>
-            <groupId>com.spring4all</groupId>
-            <artifactId>swagger-spring-boot-starter</artifactId>
-            <version>1.9.1.RELEASE</version>
-        </dependency>
-
-        <!-- Import dependecy spring boot test-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -122,7 +66,13 @@
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
                 <type>pom</type>
-                <scope>import</scope>
+                <scope>runtime</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
             </dependency>
 
             <!-- Import dependency management from Spring Cloud alibaba-->
@@ -143,6 +93,33 @@
                 <scope>import</scope>
             </dependency>
 
+            <!-- Import dependecy spring boot actuator-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+            <!-- Import dependecy spring boot swagger-->
+            <dependency>
+                <groupId>com.spring4all</groupId>
+                <artifactId>swagger-spring-boot-starter</artifactId>
+                <version>1.9.1.RELEASE</version>
+            </dependency>
+
+            <!--Import dependecy spring boot test-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.junit.vintage</groupId>
+                        <artifactId>junit-vintage-engine</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
             <!-- nacos -->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
@@ -161,14 +138,6 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-gateway</artifactId>
                 <version>${spring-cloud-gateway.version}</version>
-            </dependency>
-
-            <!-- Import dependecy mysql connector -->
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql.connection.version}</version>
-                <scope>runtime</scope>
             </dependency>
 
             <!-- Import dependecy alibaba druid -->
@@ -192,45 +161,40 @@
                 <version>${spring.version}</version>
             </dependency>
 
-            <!-- mybatis plus 代码生成器依赖 -->
-           <!-- <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-generator</artifactId>
-                <version>${mybatis.plus.version}</version>
-            </dependency>-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
 
             <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <optional>true</optional>
-                <version>${lombok.version}</version>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>3.1.0</version>
+            </dependency>
+
+            <!-- kafka配置 -->
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka</artifactId>
+                <version>2.6.2</version>
                 <scope>compile</scope>
             </dependency>
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>2.6.0</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>none</phase>
-                        <goals><goal>repackage</goal></goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <includeSystemScope>true</includeSystemScope>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
-    <distributionManagement>
+
+   <!-- <distributionManagement>
         <repository>
             <id>hnu-repository</id>
             <url>http://172.16.0.152:8081/repository/hnu_repo/</url>
         </repository>
-    </distributionManagement>
+    </distributionManagement>-->
 </project>

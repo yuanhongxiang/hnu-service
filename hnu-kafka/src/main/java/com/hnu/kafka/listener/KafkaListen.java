@@ -1,11 +1,9 @@
 package com.hnu.kafka.listener;
 
-import com.hnu.kafka.KafkaApplication;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
@@ -19,7 +17,7 @@ import javax.annotation.PostConstruct;
  **/
 @Component
 public class KafkaListen {
-    private static final Logger LOG = LoggerFactory.getLogger(KafkaApplication.class);
+    private static final Logger LOG = LoggerFactory.getLogger(KafkaListen.class);
 
     @Autowired
     private KafkaTemplate<String, Object> kafkaTemplate;
