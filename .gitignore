@@ -9,6 +9,7 @@
 target/
 target/classes/
 /target/
+*.iml
 
 # Log file
 *.log
