@@ -14,7 +14,7 @@
     <modules>
         <module>hnu-kafka</module>
         <module>hnu-common</module>
-        <module>hnu-example</module>
+        <module>hnu-service-example</module>
         <module>hnu-druid</module>
         <module>hnu-redis</module>
     </modules>

@@ -1,3 +1,0 @@
-spring.application.name=gateway-example
-#spring.profiles.include=kafka
-server.port=9000
