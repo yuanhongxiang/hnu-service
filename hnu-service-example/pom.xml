@@ -29,7 +29,7 @@
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
                 <type>pom</type>
-                <scope>runtime</scope>
+                <scope>import</scope>
             </dependency>
 
             <!-- Import dependency management from Spring Cloud alibaba-->
