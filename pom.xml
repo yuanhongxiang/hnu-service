@@ -189,12 +189,10 @@
         </dependencies>
     </dependencyManagement>
 
-
-
-   <!-- <distributionManagement>
+    <distributionManagement>
         <repository>
-            <id>hnu-repository</id>
-            <url>http://172.16.0.152:8081/repository/hnu_repo/</url>
+            <id>hnu</id>
+            <url>http://172.16.0.152:8089/nexus/content/repositories/hnu</url>
         </repository>
-    </distributionManagement>-->
+    </distributionManagement>
 </project>
